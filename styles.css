@@ -1,0 +1,334 @@
+:root {
+    --bg: #0f0f14;
+    --card: #151823;
+    --ink: #e9ecf1;
+    --muted: #a9b0c3;
+    --accent: #ff6b9d;
+    --accent-2: #7ac8ff;
+    --success: #35d07f;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: var(--ink);
+    background: linear-gradient(180deg, #4674ff 0%, #ff002f 100%);
+}
+
+.wrap {
+    width: min(940px, 92vw);
+    padding: 28px
+}
+
+.card {
+    background: linear-gradient(180deg, #171b28, #12151f);
+    border: 1px solid #2a2f46;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, .35), 0 1px inset rgba(255, 255, 255, .02);
+    overflow: hidden;
+    position: relative;
+}
+
+h1 {
+    margin: 8px 0 16px;
+    font-size: clamp(24px, 3vw, 32px);
+}
+
+p.lead {
+    color: var(--muted);
+    margin-top: 0
+}
+
+.lock {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 10px 0 6px;
+}
+
+input[type="date"],
+input[type="text"] {
+    background: #10131b;
+    color: var(--ink);
+    border: 1px solid #2a2f46;
+    padding: 12px 14px;
+    border-radius: 12px;
+    outline: none;
+    font-size: 16px;
+    transition: .2s border, .2s transform;
+}
+
+input:focus {
+    border-color: var(--accent-2);
+    transform: translateY(-1px);
+}
+
+button {
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(180deg, #ff77a6, #ff568e);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    letter-spacing: .2px;
+    box-shadow: 0 10px 25px rgba(255, 102, 155, .35);
+    transition: transform .06s ease, filter .2s ease;
+}
+
+button:active {
+    transform: translateY(1px) scale(.99);
+}
+
+.hint {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px
+}
+
+.ok {
+    color: var(--success);
+    font-weight: 700;
+}
+
+.err {
+    color: #ff839a;
+    font-weight: 700;
+}
+
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #2a2f46, transparent);
+    margin: 18px 0;
+    opacity: .8
+}
+
+/* Botón Play */
+.play-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 8px;
+}
+
+.play-btn[hidden] {
+    display: none;
+}
+
+.play-btn {
+    background: linear-gradient(180deg, #7ac8ff, #52aef2);
+    box-shadow: 0 10px 25px rgba(82, 174, 242, .35);
+    font-weight: 800;
+    border-radius: 999px;
+    padding: 12px 18px;
+    letter-spacing: .3px;
+}
+
+/* Carta (reveal) */
+.letter {
+    display: none;
+    opacity: 0;
+    translate: 0 8px;
+    transition: opacity .5s, translate .5s;
+    background: radial-gradient(800px 400px at 10% 0%, rgba(255, 255, 255, .04), transparent 60%);
+    border: 1px solid #2a2f46;
+    border-radius: 14px;
+    padding: 18px;
+    line-height: 1.6;
+}
+
+.letter.show {
+    display: block;
+    opacity: 1;
+    translate: 0 0;
+}
+
+/* Carrusel */
+.carousel {
+    display: none;
+    margin-top: 18px;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #2a2f46;
+    background: #0b0e14;
+}
+
+.carousel.show {
+    display: block;
+}
+
+.track {
+    display: flex;
+    transition: transform .5s ease;
+    will-change: transform;
+}
+
+.slide {
+    min-width: 100%;
+    height: min(72vh, 720px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0b0e14;
+}
+
+.slide img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    /* fotos completas */
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.nav {
+    position: absolute;
+    inset: auto 10px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.btn {
+    background: rgba(15, 18, 28, .75);
+    border: 1px solid rgba(122, 200, 255, .45);
+    backdrop-filter: blur(6px);
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    color: #e9f4ff;
+    cursor: pointer;
+    pointer-events: auto;
+    /* los botones sí capturan clic */
+}
+
+.dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 16px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    z-index: 2;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4a5067;
+    border: 1px solid #8bbfff33;
+}
+
+.dot.active {
+    background: #cfe9ff;
+}
+
+/* Confeti simple */
+.confetti {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+}
+
+.piece {
+    position: absolute;
+    width: 10px;
+    height: 14px;
+    opacity: .9;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+footer {
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Corazones */
+.hearts {
+    position: fixed;
+    inset: auto 0 0 0;
+    height: 0;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.heart {
+    position: absolute;
+    bottom: -24px;
+    left: var(--x, 50%);
+    font-size: var(--fs, 22px);
+    line-height: 1;
+    color: var(--c, #ff6b9d);
+    opacity: .9;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .35));
+    animation: floatUp var(--dur, 4s) ease-out forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translate(0, 0) scale(var(--s, 1));
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(calc(var(--dr, 1) * -14px), -55vh) scale(calc(var(--s, 1)*1.06));
+    }
+
+    100% {
+        transform: translate(calc(var(--dr, 1) * 18px), -110vh) scale(calc(var(--s, 1)*1.12));
+        opacity: 0;
+    }
+}
+
+/* iFrame de YouTube escondido */
+.yt-audio-only {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    bottom: -10px;
+    left: -10px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .track {
+        transition: none !important;
+    }
+
+    .heart {
+        animation: none !important;
+    }
+}

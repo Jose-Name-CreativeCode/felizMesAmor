@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Para ti 💌</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>💌 Tengo algo para ti</h1>
+        <p class="lead">
+          Escribe la <strong>fecha</strong> especial y desbloquea una carta…
+        </p>
+
+        <div class="lock">
+          <input id="dateInput" type="date" aria-label="Fecha especial (AAAA-MM-DD)" />
+          <button id="unlockBtn">Desbloquear</button>
+        </div>
+        <div id="msg" class="hint">Pista: está en formato <code>AAAA-MM-DD</code>.</div>
+
+        <div class="divider"></div>
+
+        <!-- Botón para reproducir música (aparece al desbloquear) -->
+        <div class="play-wrap">
+          <button id="playBtn" class="play-btn" hidden>▶ Play me</button>
+        </div>
+
+        <section id="letter" class="letter" aria-live="polite">
+          <h2 style="margin: 8px 0 10px">Para mi persona favorita ✨</h2>
+          <p>
+            <h3>Feliz mes 6.7!!!! 💞❤️💘❤️‍🔥</h3>
+            Amor, feliz mes princesa hermosa, gracias por todo este tiempo a tu
+            lado, me encantas tanto, quien diría que en tan poco tiempo hemos
+            vivido tantas cosas bonitas, tantas aventuras, tantos recuerdos,
+            tantas risas y hasta algunas lágrimas, pero todo ha valido la pena
+            porque ha sido contigo. Eres una persona increíble, hermosa por
+            dentro y por fuera, me haces muy feliz y cada día a tu lado es un
+            regalo que atesoro con todo mi ser, le doy gracias a Dios por
+            siempre guiar nuestro camino hasta este momento, eres la persona mas
+            increible del mundo con la que quiero pasar mi vida hasta ser 👵🏼👴🏼<br>
+            <span>Te amo con todo mi vida y corazón hermosa!!!!!!!!💞❤️💘❤️‍🔥</span>
+          </p>
+          <p style="margin: 0">— Con todo mi corazón.</p>
+        </section>
+
+        <div id="gallery" class="carousel" aria-label="Recuerdos">
+          <div class="track" id="track">
+            <div class="slide"><img src="fotos/2.jpeg" alt="Foto 1" loading="lazy" /></div>
+            <div class="slide"><img src="fotos/3.jpeg" alt="Foto 2" loading="lazy" /></div>
+            <div class="slide"><img src="fotos/4.jpeg" alt="Foto 3" loading="lazy" /></div>
+            <div class="slide"><img src="fotos/5.jpeg" alt="Foto 4" loading="lazy" /></div>
+            <div class="slide"><img src="fotos/6.jpeg" alt="Foto 5" loading="lazy" /></div>
+            <div class="slide"><img src="fotos/7.jpeg" alt="Foto 6" loading="lazy" /></div>
+            <div class="slide"><img src="fotos/8.jpeg" alt="Foto 7" loading="lazy" /></div>
+          </div>
+          <div class="nav">
+            <button class="btn" id="prevBtn" aria-label="Anterior">◀</button>
+            <button class="btn" id="nextBtn" aria-label="Siguiente">▶</button>
+          </div>
+          <div class="dots" id="dots" aria-hidden="true"></div>
+        </div>
+
+        <footer>Hecho con mucho amor 🫶</footer>
+      </div>
+    </div>
+
+    <canvas class="confetti" id="confetti"></canvas>
+    <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+    <!-- Montura invisible para el reproductor de YouTube -->
+    <div id="ytPlayerMount" class="yt-audio-only" aria-hidden="true"></div>
+
+    <!-- (Opcional) API iFrame de YouTube: no es obligatoria para el botón, pero no molesta -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script src="app.js"></script>
+  </body>
+</html>
